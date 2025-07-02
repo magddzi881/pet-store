@@ -35,7 +35,8 @@ Aplikacja będzie dostępna pod adresem: [`http://localhost:8000`](http://localh
 -   Informacje o błędach widoczne dla użytkownika w formie podobnej do pop-up,
 -   Obsługa błędów API (np. brak połączenia, brak zwierzęcia, błędne dane),
 -   Przejrzysty interfejs (widoki: `index`, `create`, `edit`),
--   Konteneryzacja (Docker)
+-   Konteneryzacja (Docker),
+-   GitHub CI/CD,
 -   Testy funkcjonalne (mockowane odpowiedzi HTTP).
 
 ## Uruchamianie aplikacji w Dockerze
