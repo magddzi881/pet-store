@@ -10,6 +10,10 @@ class PetController extends Controller
 {
     private string $baseUrl = 'https://petstore.swagger.io/v2';
 
+    /**
+     * Display list of pets
+     * Supports searching by ID or filtering by status
+     */
     public function index(Request $request)
     {
         $searchId = $request->query('search_id');
@@ -61,6 +65,9 @@ class PetController extends Controller
         return view('pets.create');
     }
 
+    /**
+     * Store a newly created pet in the external API
+     */
     public function save(Request $request)
     {
         $validated = $request->validate([
@@ -108,6 +115,9 @@ class PetController extends Controller
         return view('pets.edit', compact('pet'));
     }
 
+    /**
+     * Update the specified pet in the external API
+     */
     public function update(Request $request, $id)
     {
         $validated = $request->validate([
@@ -144,6 +154,9 @@ class PetController extends Controller
         return redirect('/')->with('success', 'Zwierzę zostało zaktualizowane');
     }
 
+    /**
+     * Remove the specified pet from the external API
+     */
     public function delete($id)
     {
         $response = Http::delete($this->baseUrl . '/pet/' . $id);
