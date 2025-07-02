@@ -29,7 +29,7 @@ class PetController extends Controller
                 $petData = $response->json();
 
                 if (isset($petData['id'])) {
-                    $pets = [new Pet($petData)];
+                    $pets = [Pet::fromArray($petData)];
                 } else {
                     $errorMessage = "Nie znaleziono zwierzęcia o ID: $searchId";
                 }
@@ -42,7 +42,7 @@ class PetController extends Controller
             ]);
             if ($response->successful()) {
                 $petsData = $response->json();
-                $pets = array_map(fn($petData) => new Pet($petData), $petsData);
+                $pets = array_map(fn($petData) => Pet::fromArray($petData), $petsData);
             } else {
                 $errorMessage = "Wystąpił błąd podczas pobierania zwierząt o statusie: $status";
             }
@@ -52,7 +52,7 @@ class PetController extends Controller
             ]);
             if ($response->successful()) {
                 $petsData = $response->json();
-                $pets = array_map(fn($petData) => new Pet($petData), $petsData);
+                $pets = array_map(fn($petData) => Pet::fromArray($petData), $petsData);
             } else {
                 $errorMessage = "Wystąpił błąd podczas pobierania zwierząt.";
             }
@@ -107,7 +107,7 @@ class PetController extends Controller
             abort(404, 'Zwierzę nie znalezione');
         }
 
-        $pet = new Pet($response->json());
+        $pet = Pet::fromArray($response->json());
         return view('pets.edit', compact('pet'));
     }
 

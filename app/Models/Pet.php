@@ -8,40 +8,24 @@ class Pet
     public ?Category $category;
     public string $name;
     public array $photoUrls;
+    /** @var Tag[] */
     public array $tags;
     public string $status;
 
-    public function __construct(array $data)
+    private function __construct()
     {
-        $this->id = $data['id'] ?? 0;
-        $this->category = isset($data['category']) ? new Category($data['category']) : null;
-        $this->name = $data['name'] ?? '';
-        $this->photoUrls = $data['photoUrls'] ?? [];
-        $this->tags = array_map(fn($tag) => new Tag($tag), $data['tags'] ?? []);
-        $this->status = $data['status'] ?? '';
     }
-}
 
-class Category
-{
-    public int $id;
-    public string $name;
-
-    public function __construct(array $data)
+    public static function fromArray(array $data): self
     {
-        $this->id = $data['id'] ?? 0;
-        $this->name = $data['name'] ?? '';
-    }
-}
+        $pet = new self();
+        $pet->id = $data['id'] ?? 0;
+        $pet->name = $data['name'] ?? '';
+        $pet->status = $data['status'] ?? '';
+        $pet->photoUrls = $data['photoUrls'] ?? [];
+        $pet->category = isset($data['category']) ? Category::fromArray($data['category']) : null;
+        $pet->tags = array_map(fn($tag) => Tag::fromArray($tag), $data['tags'] ?? []);
 
-class Tag
-{
-    public int $id;
-    public string $name;
-
-    public function __construct(array $data)
-    {
-        $this->id = $data['id'] ?? 0;
-        $this->name = $data['name'] ?? '';
+        return $pet;
     }
 }
