@@ -8,9 +8,9 @@
 </head>
 
 <body>
-    @if(!empty($errorMessage))
+    @if(session('errorMessage') || !empty($errorMessage))
         <div id="error-alert" class="error-alert">
-            {{ $errorMessage }}
+            {{ session('errorMessage') ?? $errorMessage }}
         </div>
 
         <script>
@@ -62,7 +62,13 @@
             </form>
         </div>
     </div>
-
+    @php
+        $statusMap = [
+            'available' => 'Dostępny',
+            'pending' => 'W trakcie',
+            'sold' => 'Sprzedany',
+        ];
+    @endphp
     @if(isset($pets) && count($pets) > 0)
         <table>
             <thead>
@@ -100,7 +106,9 @@
                                 -
                             @endif
                         </td>
-                        <td>{{ $pet->status ?? '-' }}</td>
+
+
+                        <td>{{ $statusMap[$pet->status] ?? '-' }}</td>
                         <td>
                             <div class="actions">
                                 <form method="GET" action="{{ url('/pet/' . $pet->id . '/edit') }}">

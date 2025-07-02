@@ -103,8 +103,10 @@ class PetController extends Controller
     public function edit($id)
     {
         $response = Http::get($this->baseUrl . '/pet/' . $id);
-        if (!$response->successful()) {
-            abort(404, 'Zwierzę nie znalezione');
+
+        if (!$response->successful() || empty($response->json('id'))) {
+            return redirect('/')
+                ->with('errorMessage', 'Nie znaleziono zwierzęcia o ID: ' . $id);
         }
 
         $pet = Pet::fromArray($response->json());

@@ -126,7 +126,7 @@ class PetControllerTest extends TestCase
         $this->assertEquals('Mimi', $response->viewData('pet')->name);
     }
 
-    public function test_edit_aborts_404_for_nonexistent_pet()
+    public function test_edit_redirects_with_error_message_for_nonexistent_pet()
     {
         Http::fake([
             'https://petstore.swagger.io/v2/pet/9999' => Http::response([], 404),
@@ -134,7 +134,8 @@ class PetControllerTest extends TestCase
 
         $response = $this->get('/pet/9999/edit');
 
-        $response->assertStatus(404);
+        $response->assertRedirect('/');
+        $response->assertSessionHas('errorMessage', 'Nie znaleziono zwierzęcia o ID: 9999');
     }
 
     public function test_update_redirects_back_on_api_error()
