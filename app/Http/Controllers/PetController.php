@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Pet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use App\Http\Requests\StorePetRequest;
+use App\Http\Requests\UpdatePetRequest;
 
 class PetController extends Controller
 {
@@ -68,15 +70,9 @@ class PetController extends Controller
     /**
      * Store a newly created pet in the external API
      */
-    public function save(Request $request)
+    public function save(StorePetRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'status' => 'required|in:available,pending,sold',
-            'photo_url' => 'required|url',
-            'category_name' => 'required|string|max:255',
-            'tags' => 'required|string',
-        ]);
+        $validated = $request->validated();
 
         $payload = [
             'id' => rand(1000, 9999),
@@ -118,15 +114,9 @@ class PetController extends Controller
     /**
      * Update the specified pet in the external API
      */
-    public function update(Request $request, $id)
+    public function update(UpdatePetRequest $request, $id)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'status' => 'required|in:available,pending,sold',
-            'photo_url' => 'required|url',
-            'category_name' => 'required|string|max:255',
-            'tags' => 'required|string',
-        ]);
+        $validated = $request->validated();
 
         $payload = [
             'id' => (int) $id,

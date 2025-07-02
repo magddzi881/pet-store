@@ -11,19 +11,26 @@
 
     <h1>Edytuj zwierzę</h1>
 
+    @if($errors->any())
+        <div class="error-alert">
+            <ul style="margin: 0; padding-left: 1.2em;">
+                Błędy w formularzu:
+                @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        <script>
+            setTimeout(() => {
+                const alert = document.querySelector('div[style*="position: fixed"]');
+                if (alert) alert.style.display = 'none';
+            }, 10000);
+        </script>
+    @endif
+
     <form method="POST" action="{{ url('/pet/' . $pet->id) }}">
         @csrf
         @method('PUT')
-
-        @if($errors->any())
-            <div style="color: red; margin-bottom: 1rem;">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
 
         <div class="form-grid">
             <div>
