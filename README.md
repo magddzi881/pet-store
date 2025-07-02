@@ -53,7 +53,7 @@ W projekcie dostępna jest konfiguracja Docker umożliwiająca uruchomienie apli
 docker-compose up --build
 ```
 
-Po zbudowaniu i uruchomieniu serwera aplikacja również będzie dostępna pod adresem [`http://localhost:8000`](http://localhost:8000)
+Po zbudowaniu i uruchomieniu serwera aplikacja również będzie dostępna pod adresem: [`http://localhost:8000`](http://localhost:8000)
 
 ## Testy
 
