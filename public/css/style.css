@@ -1,0 +1,213 @@
+body {
+    background-color: #0e0e0e;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 2rem;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #444;
+    border-radius: 10px;
+    border: 2px solid #1a1a1a;
+}
+
+h1 {
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+}
+
+.top-actions {
+    margin-bottom: 1.5rem;
+}
+
+.input {
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+    padding-right: 36px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background-color: #1a1a1a;
+    box-sizing: border-box;
+    color: #eee;
+    margin-bottom: 1rem;
+}
+
+select.input {
+  padding-right: 2.5em;
+  appearance: none; 
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: url('data:image/svg+xml;utf8,<svg fill="gray" height="12" viewBox="0 0 24 24" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 0.75em center;
+  background-size: 21px;
+  padding: 10px;
+  width: 100%;
+  max-width: 400px;
+  padding-right: 36px;
+  border-radius: 6px;
+  border: 1px solid #333;
+  background-color: #1a1a1a;
+  box-sizing: border-box;
+  color: #eee;
+  margin-bottom: 1rem;
+  cursor: pointer;
+}
+
+
+
+a.button {
+    background-color: #2d7ddb;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+a.button:hover {
+    background-color: #1e5fae;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #181818;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+th {
+    background-color: #222;
+    font-weight: bold;
+    color: #ccc;
+}
+
+tbody tr:hover {
+    background-color: #2a2a2a;
+}
+
+.actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-edit {
+    background-color: #3a74d3;
+    color: #fff;
+}
+
+.btn-edit:hover {
+    background-color: #2f5cb2;
+    transform: scale(1.04);
+}
+
+.btn-delete {
+    background-color: #cc4444;
+    color: #fff;
+}
+
+.btn-delete:hover {
+    background-color: #a93636;
+    transform: scale(1.04);
+}
+
+.actions form {
+    margin: 0;
+}
+
+.sbutton {
+    background-color: #2d7ddb;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.sbutton:hover {
+    background-color: #1e5fae;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem 2rem; 
+  max-width: 850px; 
+}
+
+.form-grid > div {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 600px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+form label {
+  margin-bottom: 0.3rem; 
+  display: inline-block; 
+}
+
+.error-alert {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background-color: #cc4444;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    max-width: 300px;
+    font-weight: 600;
+}
+
+.success-alert {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background-color: #2d7ddb;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    font-weight: 600;
+}
