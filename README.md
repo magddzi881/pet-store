@@ -22,7 +22,7 @@ composer install
 php artisan serve
 ```
 
-Aplikacja będzie dostępna pod adresem: [`http://127.0.0.1:8000`](http://127.0.0.1:8000)
+Aplikacja będzie dostępna pod adresem: [`http://localhost:8000`](http://localhost:8000)
 
 ## Funkcjonalności
 
@@ -35,7 +35,25 @@ Aplikacja będzie dostępna pod adresem: [`http://127.0.0.1:8000`](http://127.0.
 -   Informacje o błędach widoczne dla użytkownika w formie podobnej do pop-up,
 -   Obsługa błędów API (np. brak połączenia, brak zwierzęcia, błędne dane),
 -   Przejrzysty interfejs (widoki: `index`, `create`, `edit`),
+-   Konteneryzacja (Docker)
 -   Testy funkcjonalne (mockowane odpowiedzi HTTP).
+
+## Uruchamianie aplikacji w Dockerze
+
+W projekcie dostępna jest konfiguracja Docker umożliwiająca uruchomienie aplikacji Laravel w kontenerze PHP.
+
+### Pliki konfiguracyjne:
+
+-   `Dockerfile` – obraz PHP 8.4 CLI z Composerem i rozszerzeniami,
+-   `docker-compose.yml` – usługa laravel uruchamiającą aplikację i mapującą port 8000.
+
+### Budowanie i uruchomienie kontenera
+
+```bash
+docker-compose up --build
+```
+
+Po zbudowaniu i uruchomieniu serwera aplikacja również będzie dostępna pod adresem [`http://localhost:8000`](http://localhost:8000)
 
 ## Testy
 
